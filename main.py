@@ -36,4 +36,7 @@ if __name__ == '__main__':
     scheduler.start()
     atexit.register(lambda: scheduler.shutdown())
 
+    if len(meal_db.meals) == 0:
+        meal.data_syncer.sync()
+
     app.run(host='0.0.0.0', port=5000)
